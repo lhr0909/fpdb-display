@@ -1,6 +1,7 @@
 var constants = require('./constants.js');
 var mysql  = require('mysql');
 var express = require('express');
+var cors = require('cors');
 
 var getGraphData = function(callback) {
   var connection = mysql.createConnection({
@@ -24,7 +25,9 @@ var getGraphData = function(callback) {
 
 var app = express();
 
-app.get('/cash_graph.json', function(req, res) {
+app.use(cors());
+
+app.get('/fpdb-display/cash_graph.json', function(req, res) {
   getGraphData(function(rows, fields) {
     res.send(rows);
   });
