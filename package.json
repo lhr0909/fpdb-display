@@ -1,0 +1,19 @@
+{
+  "author": "Simon Liang",
+  "name": "fpdb-display",
+  "description": "A very lean client for showing fpdb stats in mySQL server",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lhr0909/fpdb-display.git"
+  },
+  "main": "web.js",
+  "dependencies": {
+    "mysql": "~2.1.1"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
