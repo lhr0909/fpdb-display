@@ -23,7 +23,7 @@ var runQuery = function(query, callback) {
 };
 
 var getCashGraphData = function(callback) {
-  runQuery("SELECT hp.handId, hp.totalProfit, hp.sawShowdown, hp.allInEV FROM HandsPlayers hp INNER JOIN Players pl ON (pl.id = hp.playerId) INNER JOIN Hands h ON (h.id  = hp.handId) INNER JOIN Gametypes gt ON (gt.id = h.gametypeId) WHERE pl.id in (1, 15) AND   pl.siteId in (2, 21) AND   h.startTime > '1970-01-02 00:00:00' AND   h.startTime < '2100-12-12 23:59:59' AND (gt.limitType = 'nl' and gt.bigBlind in (2, 5, 10)) and gt.category in ('holdem') AND gt.currency in ('USD') GROUP BY h.startTime, hp.handId, hp.sawShowdown, hp.totalProfit, hp.allInEV ORDER BY h.startTime", callback);
+  runQuery("SELECT hp.handId, hp.totalProfit, hp.sawShowdown, hp.allInEV FROM HandsPlayers hp INNER JOIN Players pl ON (pl.id = hp.playerId) INNER JOIN Hands h ON (h.id  = hp.handId) INNER JOIN Gametypes gt ON (gt.id = h.gametypeId) WHERE pl.id in (5) AND   pl.siteId in (2) AND   h.startTime > '1970-01-02 00:00:00' AND   h.startTime < '2100-12-12 23:59:59' AND (gt.limitType = 'nl' and gt.bigBlind in (2, 5, 10)) and gt.category in ('holdem') AND gt.currency in ('USD') GROUP BY h.startTime, hp.handId, hp.sawShowdown, hp.totalProfit, hp.allInEV ORDER BY h.startTime", callback);
 };
 
 var getTourneyGraphData = function(callback) {
