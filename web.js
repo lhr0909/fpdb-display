@@ -27,7 +27,7 @@ var getCashGraphData = function(callback) {
 };
 
 var getTourneyGraphData = function(callback) {
-  runQuery("SELECT tp.tourneyId, (coalesce(tp.winnings,0) - coalesce(tt.buyIn,0) - coalesce(tt.fee,0)) as profit, tp.koCount, tp.rebuyCount, tp.addOnCount, tt.buyIn, tt.fee, t.siteTourneyNo FROM TourneysPlayers tp INNER JOIN Players pl ON (pl.id = tp.playerId) INNER JOIN Tourneys t ON (t.id  = tp.tourneyId) INNER JOIN TourneyTypes tt ON (tt.id = t.tourneyTypeId) WHERE pl.id in (1) AND   pl.siteId in (21) AND   (t.startTime > '1970-01-02 00:00:00' AND t.startTime < '2100-12-12 23:59:59') AND   tt.currency = 'USD' GROUP BY t.startTime, tp.tourneyId, tp.winningsCurrency, tp.winnings, tp.koCount, tp.rebuyCount, tp.addOnCount, tt.buyIn, tt.fee, t.siteTourneyNo ORDER BY t.startTime", callback);
+  runQuery("SELECT tp.tourneyId, (coalesce(tp.winnings,0) - coalesce(tt.buyIn,0) - coalesce(tt.fee,0)) as profit, tp.koCount, tp.rebuyCount, tp.addOnCount, tt.buyIn, tt.fee, t.siteTourneyNo FROM TourneysPlayers tp INNER JOIN Players pl ON (pl.id = tp.playerId) INNER JOIN Tourneys t ON (t.id  = tp.tourneyId) INNER JOIN TourneyTypes tt ON (tt.id = t.tourneyTypeId) WHERE pl.id in (5) AND   pl.siteId in (2) AND   (t.startTime > '1970-01-02 00:00:00' AND t.startTime < '2100-12-12 23:59:59') AND   tt.currency = 'USD' GROUP BY t.startTime, tp.tourneyId, tp.winningsCurrency, tp.winnings, tp.koCount, tp.rebuyCount, tp.addOnCount, tt.buyIn, tt.fee, t.siteTourneyNo ORDER BY t.startTime", callback);
 };
 
 var app = express();
