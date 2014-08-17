@@ -1,6 +1,7 @@
 var constants = require('./constants.js');
 var mysql  = require('mysql');
 var express = require('express');
+var request = require('request');
 var cors = require('cors');
 
 var runQuery = function(query, callback) {
@@ -43,6 +44,18 @@ app.get('/fpdb-display/cash_graph.json', function(req, res) {
 app.get('/fpdb-display/tourney_graph.json', function(req, res) {
   getTourneyGraphData(function(rows, fields) {
     res.send(rows);
+  });
+});
+
+app.get('/fpdb-display/bitcoin_price.json', function(req, res) {
+  request({
+    uri: 'https://coinbase.com/api/v1/prices/sell',
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20120427 Firefox/15.0a1'
+    },
+    method: 'GET',
+  }, function(error, response, body) {
+    res.send(body);
   });
 });
 
